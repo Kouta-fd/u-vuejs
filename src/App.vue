@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <LikeHeader></LikeHeader>
+    <h2>{{number}}</h2>
+    <LikeNumber :total-number="number" @my-click="incrementNumber"></LikeNumber>
+    <LikeNumber :total-number="number"></LikeNumber>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  import LikeNumber from './components/LikeNumber'
+  import LikeHeader from './components/LikeHeader'
+  export default {
+    data() {
+      return {
+        number: 10
+      }
+    },
+    components: {
+      LikeNumber,
+      LikeHeader
+    },
+    methods: {
+      incrementNumber(value) {
+        this.number = value
+      }
+    }
+  };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
